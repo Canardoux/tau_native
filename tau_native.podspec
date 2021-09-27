@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'tau_native'
-  s.version          = '0.0.1-alpha-4'
+  s.version          = '0.0.1-alpha-5'
   s.summary          = 'Provides simple recorder and player functionalities for both Android and iOS platforms.'
 
 # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ It has been extracted to be isolated from Flutter and can be used with other fra
   s.homepage         = 'https://github.com/canardoux/tau10'
   s.license          = { :type => 'GPL3', :file => 'LICENSE' }
   s.author           = { 'larpoux' => 'larpoux@gmail.com' }
-  s.source           = { :git => 'https://github.com/canardoux/tau10.git', :tag => '' + s.version.to_s }
+  s.source           = { :git => 'https://github.com/canardoux/tau_native.git', :tag => '' + s.version.to_s }
 
   s.ios.deployment_target = '10.0'
 
