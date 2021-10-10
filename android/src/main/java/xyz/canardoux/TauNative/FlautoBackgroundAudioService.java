@@ -5,7 +5,7 @@ package xyz.canardoux.TauNative;
  * This file is part of the τ Sound project.
  *
  * τ Sound is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Public License version 3 (GPL3.0), 
+ * it under the terms of the GNU Public License version 3 (GPL3.0),
  * as published by the Free Software Foundation.
  *
  * τ Sound is distributed in the hope that it will be useful,
@@ -49,6 +49,7 @@ import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
 import android.text.TextUtils;
 import android.util.Log;
+import android.R;
 
 import androidx.arch.core.util.Function;
 import androidx.core.app.NotificationCompat;
@@ -755,7 +756,7 @@ public class FlautoBackgroundAudioService
 	private void showPlayingNotification()
 	{
 		// The player is playing, then build an action to pause the playback
-		NotificationCompat.Action actionPause = new NotificationCompat.Action( R.drawable.ic_pause, "Pause", MediaButtonReceiver.buildMediaButtonPendingIntent( this, PlaybackStateCompat.ACTION_PLAY_PAUSE ) );
+		NotificationCompat.Action actionPause = new NotificationCompat.Action( R.drawable.ic_media_pause, "Pause", MediaButtonReceiver.buildMediaButtonPendingIntent( this, PlaybackStateCompat.ACTION_PLAY_PAUSE ) );
 
 		// Show the notification
 		displayNotification( getApplicationContext(), actionPause );
@@ -768,7 +769,7 @@ public class FlautoBackgroundAudioService
 	private void showPausedNotification()
 	{
 		// The player is paused, then build an action to play the playback
-		NotificationCompat.Action actionPlay = new NotificationCompat.Action( R.drawable.ic_play_arrow, "Play", MediaButtonReceiver.buildMediaButtonPendingIntent( this, PlaybackStateCompat.ACTION_PLAY_PAUSE ) );
+		NotificationCompat.Action actionPlay = new NotificationCompat.Action( R.drawable.ic_media_play, "Play", MediaButtonReceiver.buildMediaButtonPendingIntent( this, PlaybackStateCompat.ACTION_PLAY_PAUSE ) );
 
 		// Show the notification
 		displayNotification( getApplicationContext(), actionPlay );
@@ -803,11 +804,11 @@ public class FlautoBackgroundAudioService
 
 			// Create the actions to skip forward and backward
 			boolean skipBackwardEnabled = skipTrackBackwardHandler != null;
-			NotificationCompat.Action skipBackward = new NotificationCompat.Action( skipBackwardEnabled ? R.drawable.ic_skip_prev_on : R.drawable.ic_skip_prev_off, "Skip Backward",
+			NotificationCompat.Action skipBackward = new NotificationCompat.Action( skipBackwardEnabled ? R.drawable.ic_media_previous : R.drawable.ic_media_previous, "Skip Backward",
 			                                                                        skipBackwardEnabled ? MediaButtonReceiver.buildMediaButtonPendingIntent( this, PlaybackStateCompat.ACTION_SKIP_TO_PREVIOUS ) : null
 			);
 			boolean skipForwardEnabled = true; // skipTrackForwardHandler != null;
-			NotificationCompat.Action skipForward = new NotificationCompat.Action( skipForwardEnabled ? R.drawable.ic_skip_next_on : R.drawable.ic_skip_next_off, "Skip Forward",
+			NotificationCompat.Action skipForward = new NotificationCompat.Action( skipForwardEnabled ? R.drawable.ic_media_next : R.drawable.ic_media_next, "Skip Forward",
 			                                                                       skipForwardEnabled ? MediaButtonReceiver.buildMediaButtonPendingIntent( this, PlaybackStateCompat.ACTION_SKIP_TO_NEXT ) : null
 			);
 

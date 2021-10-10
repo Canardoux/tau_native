@@ -5,7 +5,7 @@ package xyz.canardoux.TauNative;
  * This file is part of the τ Sound project.
  *
  * τ Sound is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Public License version 3 (GPL3.0), 
+ * it under the terms of the GNU Public License version 3 (GPL3.0),
  * as published by the Free Software Foundation.
  *
  * τ Sound is distributed in the hope that it will be useful,
@@ -29,6 +29,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 import androidx.media.app.NotificationCompat.MediaStyle;
 import androidx.media.session.MediaButtonReceiver;
+import android.R;
 
 
 /**
@@ -92,7 +93,7 @@ public class FlautoMediaStyleHelper {
                                 // Add an app icon and set its accent color
                                 // Be careful about the color
                                 .setSmallIcon(android.R.drawable.ic_media_pause)
-                                .setColor(ContextCompat.getColor(context, R.color.colorPrimaryDark))
+                                .setColor(ContextCompat.getColor(context, R.color.primary_text_dark))
 
                                 // Add a pause button
                                 .addAction(new NotificationCompat.Action(android.R.drawable.ic_media_pause, "pause",
