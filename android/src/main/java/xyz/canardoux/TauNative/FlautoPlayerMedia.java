@@ -37,24 +37,32 @@ class FlautoPlayerMedia extends FlautoPlayerEngineInterface
 	}
 
 	void _startPlayer(String path,  int sampleRate, int numChannels, int blockSize, FlautoPlayer theSession) throws Exception
- 	{
-		this.flautoPlayer = theSession;
- 		mediaPlayer = new MediaPlayer();
+	{
 		if (path == null)
 		{
 			throw new Exception("path is NULL");
 		}
+		this.flautoPlayer = theSession;
+		mediaPlayer = new MediaPlayer();
+
 		mediaPlayer.setDataSource(path);
-		final String pathFile = path;
 		mediaPlayer.setOnPreparedListener(mp -> {flautoPlayer.play(); flautoPlayer.onPrepared();});
 		mediaPlayer.setOnCompletionListener(mp -> flautoPlayer.onCompletion());
-		mediaPlayer.setOnErrorListener(flautoPlayer);
-		mediaPlayer.prepare();
+		mediaPlayer.setOnErrorListener((mp, what, extra) -> {
+			flautoPlayer.onError(mp, what, extra);
+			flautoPlayer.onPrepared();
+			return  false;
+		});
+		mediaPlayer.prepareAsync();
 	}
 
 	void _play()
 	{
-		mediaPlayer.start();
+		mediaPlayer.setOnPreparedListener(mp -> {
+			flautoPlayer.play();
+			flautoPlayer.onPrepared();
+			mp.start();
+		});
 	}
 
 	int feed(byte[] data) throws Exception
