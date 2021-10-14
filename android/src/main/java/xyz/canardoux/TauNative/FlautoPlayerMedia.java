@@ -46,7 +46,7 @@ class FlautoPlayerMedia extends FlautoPlayerEngineInterface
 		mediaPlayer = new MediaPlayer();
 
 		mediaPlayer.setDataSource(path);
-		mediaPlayer.setOnPreparedListener(mp -> {flautoPlayer.play(); flautoPlayer.onPrepared();});
+		mediaPlayer.setOnPreparedListener(mp -> {flautoPlayer.play(); _play(); flautoPlayer.onPrepared();});
 		mediaPlayer.setOnCompletionListener(mp -> flautoPlayer.onCompletion());
 		mediaPlayer.setOnErrorListener((mp, what, extra) -> {
 			flautoPlayer.onError(mp, what, extra);
@@ -58,11 +58,7 @@ class FlautoPlayerMedia extends FlautoPlayerEngineInterface
 
 	void _play()
 	{
-		mediaPlayer.setOnPreparedListener(mp -> {
-			flautoPlayer.play();
-			flautoPlayer.onPrepared();
-			mp.start();
-		});
+		mediaPlayer.start();
 	}
 
 	int feed(byte[] data) throws Exception
