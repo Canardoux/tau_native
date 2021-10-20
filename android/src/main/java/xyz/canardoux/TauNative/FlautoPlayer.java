@@ -422,7 +422,7 @@ public class FlautoPlayer extends FlautoSession implements MediaPlayer.OnErrorLi
 			{
 
 			}
-			player._play();
+//			player._play();
 			return true;
 	}
 
