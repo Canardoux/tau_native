@@ -5,7 +5,7 @@ package xyz.canardoux.TauNative;
  * This file is part of the τ Sound project.
  *
  * τ Sound is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Public License version 3 (GPL3.0), 
+ * it under the terms of the GNU Public License version 3 (GPL3.0),
  * as published by the Free Software Foundation.
  *
  * τ Sound is distributed in the hope that it will be useful,
@@ -46,13 +46,9 @@ class FlautoPlayerMedia extends FlautoPlayerEngineInterface
 		mediaPlayer = new MediaPlayer();
 
 		mediaPlayer.setDataSource(path);
-		mediaPlayer.setOnPreparedListener(mp -> {flautoPlayer.play(); _play(); flautoPlayer.onPrepared();});
+		mediaPlayer.setOnPreparedListener(mp ->  flautoPlayer.onPrepared());
 		mediaPlayer.setOnCompletionListener(mp -> flautoPlayer.onCompletion());
-		mediaPlayer.setOnErrorListener((mp, what, extra) -> {
-			flautoPlayer.onError(mp, what, extra);
-			flautoPlayer.onPrepared();
-			return  false;
-		});
+		mediaPlayer.setOnErrorListener((mp, what, extra) -> flautoPlayer.onError(mp, what, extra));
 		mediaPlayer.prepareAsync();
 	}
 

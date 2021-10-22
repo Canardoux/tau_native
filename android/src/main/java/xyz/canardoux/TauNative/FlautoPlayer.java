@@ -5,7 +5,7 @@ package xyz.canardoux.TauNative;
  * This file is part of the τ Sound project.
  *
  * τ Sound is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Public License version 3 (GPL3.0), 
+ * it under the terms of the GNU Public License version 3 (GPL3.0),
  * as published by the Free Software Foundation.
  *
  * τ Sound is distributed in the hope that it will be useful,
@@ -203,9 +203,8 @@ public class FlautoPlayer extends FlautoSession implements MediaPlayer.OnErrorLi
 				player = new FlautoPlayerMedia(this);
 			}
 			String path = Flauto.getPath(fromURI);
-
 			player._startPlayer(path,  sampleRate, numChannels, blockSize, this);
-			play();
+			//play();
 		}
 		catch ( Exception e )
 		{
@@ -268,6 +267,10 @@ public class FlautoPlayer extends FlautoSession implements MediaPlayer.OnErrorLi
 	{
 		// ... react appropriately ...
 		// The MediaPlayer has moved to the Error state, must be reset!
+		stop();
+
+		m_callBack.startPlayerCompleted(false, 0);
+
 		return false;
 	}
 
@@ -306,7 +309,7 @@ public class FlautoPlayer extends FlautoSession implements MediaPlayer.OnErrorLi
 				//dico.put( "duration", (int) duration);
 				//dico.put( "state",  (int)getPlayerState());
 				playerState = t_PLAYER_STATE.PLAYER_IS_PLAYING;
-
+				play();
 				m_callBack.startPlayerCompleted(true, duration);
 			}
 		});
@@ -422,7 +425,7 @@ public class FlautoPlayer extends FlautoSession implements MediaPlayer.OnErrorLi
 			{
 
 			}
-//			player._play();
+			player._play();
 			return true;
 	}
 
