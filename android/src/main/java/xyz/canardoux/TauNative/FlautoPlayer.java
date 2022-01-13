@@ -247,21 +247,6 @@ public class FlautoPlayer extends FlautoSession implements MediaPlayer.OnErrorLi
 		});
 	}
 
-	public boolean startPlayerFromTrack
-	(
-		FlautoTrack track,
-		boolean canPause,
-		boolean canSkipForward,
-		boolean canSkipBackward,
-		int progress,
-		int duration,
-		boolean removeUIWhenStopped,
-		boolean defaultPauseResume
-	)
-	{
-		logError ( "Must be initialized With UI" );
-		return false;
-	}
 
 	public boolean onError(MediaPlayer mp, int what, int extra)
 	{
@@ -609,25 +594,6 @@ public class FlautoPlayer extends FlautoSession implements MediaPlayer.OnErrorLi
 		return dic;
 	}
 
-	public void nowPlaying
-	(
-		FlautoTrack track,
-		boolean canPause,
-		boolean canSkipForward,
-		boolean canSkipbackward,
-		boolean defaultPauseResume,
-		int progress,
-		int duration
-	)
-	{
-		throw new RuntimeException(); // TODO
-	}
-
-
-	public void setUIProgressBar (int progress, int duration)
-	{
-		throw new RuntimeException(); // TODO
-	}
 
 
 	void logDebug (String msg)
